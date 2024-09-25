@@ -8,5 +8,20 @@ namespace BankAccountManagementSystem_OOP
 {
     internal class Bank
     {
+        //list to store Bank accounts 
+        private List<BankAccount> accounts;
+
+        public Bank() 
+        {
+            accounts = new List<BankAccount>();
+        }
+
+        //method to add a new account 
+        public void AddAccount(BankAccount account) 
+        {
+            accounts.Add(account);
+            Console.WriteLine("Account Successfully added!");
+        }
+
     }
 }
