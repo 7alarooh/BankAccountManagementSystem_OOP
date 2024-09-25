@@ -65,5 +65,12 @@ namespace BankAccountManagementSystem_OOP
             }
         }
 
+        //method to Get Account Infomation 
+        public void GetAccountInfo() {
+            Console.WriteLine($"Account Number: {accountNumber} \n" +
+                $"Account Holder: {accountHolderName}\n" +
+                $"Balance: {balance} OMR \n");
+        }
+
     }
 }
