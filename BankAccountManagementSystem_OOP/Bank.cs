@@ -36,6 +36,22 @@ namespace BankAccountManagementSystem_OOP
             return null;
         }
 
+        public void DisplayAllAccounts() 
+        {
+            if (accounts.Count == 0) 
+            {
+                Console.WriteLine("No Accounts available!");
+                return;
+            }
+            Console.WriteLine("List of accounts avaliable:" +
+                "---------------------------------------------------\n");
+            foreach (BankAccount account in accounts) 
+            {
+                account.GetAccountInfo();
+            }
+
+        }
+
 
     }
 }
