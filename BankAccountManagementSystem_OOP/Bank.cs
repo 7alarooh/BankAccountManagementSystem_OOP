@@ -23,5 +23,19 @@ namespace BankAccountManagementSystem_OOP
             Console.WriteLine("Account Successfully added!");
         }
 
+        // method to get an account by account number
+       
+        public BankAccount GetAccountByNumber(string accountNumber) 
+        {
+            foreach (BankAccount account in accounts) 
+            {
+                if (account.GetAccountNumber() == accountNumber)
+                { return account; }
+            }
+            Console.WriteLine("Account not found!");
+            return null;
+        }
+
+
     }
 }

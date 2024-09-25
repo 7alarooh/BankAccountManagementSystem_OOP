@@ -72,5 +72,9 @@ namespace BankAccountManagementSystem_OOP
                 $"Balance: {balance} OMR \n");
         }
 
+        public string GetAccountNumber() {
+            return $"{accountNumber}"; }
+        
+
     }
 }
