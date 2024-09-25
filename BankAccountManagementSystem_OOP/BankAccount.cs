@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace BankAccountManagementSystem_OOP
 {
-    internal class BankAccount
+    public class BankAccount
     {
+        // private properties
+        private string accountNumber;
+        private string accountHolderName;
+        private double balance;
+
+
+
     }
 }
