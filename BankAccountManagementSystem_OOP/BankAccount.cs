@@ -52,5 +52,18 @@ namespace BankAccountManagementSystem_OOP
 
         //method to withdraw money (decrease balance)
 
+        public void Withdraw(decimal amount) 
+        {
+            if (amount > 0 && amount<=balance)
+            {
+                balance -= amount;
+                Console.WriteLine($"Successfully withdrew {amount} OMR. New balance  is {balance} OMR");
+            }
+            else
+            {
+                Console.WriteLine("Invalid withdraw amount!");
+            }
+        }
+
     }
 }
