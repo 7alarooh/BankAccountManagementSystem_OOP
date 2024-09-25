@@ -14,6 +14,10 @@ namespace BankAccountManagementSystem_OOP
         public Bank() 
         {
             accounts = new List<BankAccount>();
+            accounts.Add(new BankAccount("444", "mmm"));
+            accounts.Add(new BankAccount("555", "ccc"));
+            accounts.Add(new BankAccount("999", "ddd", 8));
+            accounts.Add(new BankAccount("999", "ddd", 10));
         }
 
         //method to add a new account 
