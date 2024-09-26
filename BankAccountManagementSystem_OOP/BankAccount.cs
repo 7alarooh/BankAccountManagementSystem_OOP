@@ -12,7 +12,7 @@ namespace BankAccountManagementSystem_OOP
         // private properties
         private string accountNumber;
         private string accountHolderName;
-        private decimal balance;
+        public decimal balance { get; private set; }
 
         // constructor with 2 parameters
         public BankAccount( string accountNumber, string accountHolderName) 
@@ -29,7 +29,6 @@ namespace BankAccountManagementSystem_OOP
             this.accountNumber = accountNumber;
 
             if (initialDeposit > 0) { balance = initialDeposit;
-                Console.WriteLine($"Successfully deposited {initialDeposit} OMR");
             }
             else {
                 Console.WriteLine("deposit amount must be positive!");

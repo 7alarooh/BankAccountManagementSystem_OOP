@@ -29,15 +29,19 @@ namespace BankAccountManagementSystem_OOP
 
         // method to get an account by account number
        
-        public BankAccount GetAccountByNumber(string accountNumber) 
+        public BankAccount GetAccountByNumber(string accountNumber, bool checkdo=false) 
         {
             foreach (BankAccount account in accounts) 
             {
                 if (account.GetAccountNumber() == accountNumber)
                 { return account; }
             }
-            Console.WriteLine("Account not found!");
-            return null;
+            if (checkdo==false)
+            {
+                Console.WriteLine("Account not found!");
+                return null;
+            }
+            else { return null; }
         }
 
         public void DisplayAllAccounts() 

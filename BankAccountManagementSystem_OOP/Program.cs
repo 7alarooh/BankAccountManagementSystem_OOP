@@ -65,7 +65,7 @@
                     continue;
                 }
                 //to check the unique  input 
-                BankAccount account = Bank.GetAccountByNumber(accountNumber);
+                BankAccount account = Bank.GetAccountByNumber(accountNumber,true);
                 if (account != null)
                 {
                     Console.WriteLine("This Account Number already used! Try again! ");
