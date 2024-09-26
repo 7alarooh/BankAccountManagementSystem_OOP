@@ -55,18 +55,24 @@
         {
             Console.Clear();
             Console.WriteLine(":::::: Create New Account ::::::");
-
-            string accountNumber = GetInput("Enter the account number:");
-            if (!IsNumeric(accountNumber))
+            string accountNumber;
+            while (true)  // Infinite loop until a valid input is provided
             {
-                Console.WriteLine("Sorry! you must Enter numbers only in account number!");
-                return;
-            }
-            //to check the unique  input 
-            BankAccount account = Bank.GetAccountByNumber(accountNumber);
-            if (account != null)
-            {
-                Console.WriteLine("This Account Number already used! Try again! ");
+                 accountNumber = GetInput("Enter the account number:");
+                if (!IsNumeric(accountNumber))
+                {
+                    Console.WriteLine("Sorry! you must Enter numbers only in account number!");
+                    continue;
+                }
+                //to check the unique  input 
+                BankAccount account = Bank.GetAccountByNumber(accountNumber);
+                if (account != null)
+                {
+                    Console.WriteLine("This Account Number already used! Try again! ");
+                    continue;
+                }
+                // If both checks pass, exit the loop
+                break;
             }
             
             string accountHolderName = GetInput("Enter the account holder name:");
