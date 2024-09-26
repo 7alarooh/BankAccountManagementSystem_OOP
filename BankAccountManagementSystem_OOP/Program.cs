@@ -57,105 +57,114 @@
             Console.WriteLine(":::::: Create New Account ::::::");
 
             string accountNumber = GetInput("Enter the account number:");
-            if (!IsNumeric(accountNumber)) { Console.WriteLine("Sorry! you must Enter numbers only!");
+            if (!IsNumeric(accountNumber))
+            {
+                Console.WriteLine("Sorry! you must Enter numbers only in account number!");
                 return;
             }
-
-                string accountHolderName = GetInput("Enter the account holder name:");
+            //to check the unique  input 
+            BankAccount account = Bank.GetAccountByNumber(accountNumber);
+            if (account != null)
+            {
+                Console.WriteLine("This Account Number already used! Try again! ");
+            }
             
+            string accountHolderName = GetInput("Enter the account holder name:");
             if (string.IsNullOrEmpty(accountNumber) || string.IsNullOrEmpty(accountHolderName))
-            {
-                Console.WriteLine("Operation canceled.");
-                return;
-            }
-
-            string initialDepositInput = GetInput("Enter initial deposit (optional, press Enter to skip):");
-            if (decimal.TryParse(initialDepositInput, out decimal initialDeposit))
-            {
-                Bank.AddAccount(new BankAccount(accountHolderName, accountNumber, initialDeposit));
-            }
-            else
-            {
-                Bank.AddAccount(new BankAccount(accountHolderName, accountNumber));
-            }
-        }
-
-        // Function to deposit money
-        static void DepositMoney()
-        {
-            string accountNumber = GetInput("Enter the account number:");
-            if (!IsNumeric(accountNumber))
-            {
-                Console.WriteLine("Sorry! you must Enter numbers only!");
-                return;
-            }
-            BankAccount account = Bank.GetAccountByNumber(accountNumber);
-            if (account != null)
-            {
-                string amountInput = GetInput("Enter amount to deposit:");
-                if (decimal.TryParse(amountInput, out decimal amount))
                 {
-                    account.Deposit(amount);
+                    Console.WriteLine("Operation canceled.");
+                    return;
+                }
+
+
+                string initialDepositInput = GetInput("Enter initial deposit (optional, press Enter to skip):");
+                if (decimal.TryParse(initialDepositInput, out decimal initialDeposit))
+                {
+                    Bank.AddAccount(new BankAccount(accountHolderName, accountNumber, initialDeposit));
                 }
                 else
                 {
-                    Console.WriteLine("Invalid amount!");
+                    Bank.AddAccount(new BankAccount(accountHolderName, accountNumber));
                 }
-            }
+            
         }
-
-        // Function to withdraw money
-        static void WithdrawMoney()
-        {
-            string accountNumber = GetInput("Enter the account number:");
-            BankAccount account = Bank.GetAccountByNumber(accountNumber);
-            if (!IsNumeric(accountNumber))
+            // Function to deposit money
+            static void DepositMoney()
             {
-                Console.WriteLine("Sorry! you must Enter numbers only!");
-                return;
-            }
-            if (account != null)
-            {
-                string amountInput = GetInput("Enter amount to withdraw:");
-                if (decimal.TryParse(amountInput, out decimal amount))
+                string accountNumber = GetInput("Enter the account number:");
+                if (!IsNumeric(accountNumber))
                 {
-                    account.Withdraw(amount);
+                    Console.WriteLine("Sorry! you must Enter numbers only in account number!");
+                    return;
                 }
-                else
+                BankAccount account = Bank.GetAccountByNumber(accountNumber);
+                if (account != null)
                 {
-                    Console.WriteLine("Invalid amount!");
+                    string amountInput = GetInput("Enter amount to deposit:");
+                    if (decimal.TryParse(amountInput, out decimal amount))
+                    {
+                        account.Deposit(amount);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid amount!");
+                    }
                 }
             }
-        }
 
-        // Function to display all accounts
-        static void DisplayAllAccounts()
-        {
-            Console.Clear();
-            Bank.DisplayAllAccounts();
-        }
-
-        // Helper function to get user input
-         
-        static string GetInput(string prompt)
-        {
-            Console.WriteLine(prompt);
-            string input = Console.ReadLine();
-
-            // Check if the user wants to exit
-            if (input.ToLower() == "exit")
+            // Function to withdraw money
+            static void WithdrawMoney()
             {
-                Console.WriteLine("Exiting the current operation...");
-                return null; // Return null if "exit" is entered
+                string accountNumber = GetInput("Enter the account number:");
+                BankAccount account = Bank.GetAccountByNumber(accountNumber);
+                if (!IsNumeric(accountNumber))
+                {
+                    Console.WriteLine("Sorry! you must Enter numbers only in account number!");
+                    return;
+                }
+                if (account != null)
+                {
+                    string amountInput = GetInput("Enter amount to withdraw:");
+                    if (decimal.TryParse(amountInput, out decimal amount))
+                    {
+                        account.Withdraw(amount);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid amount!");
+                    }
+                }
             }
 
-            return input; // Return the valid input
+            // Function to display all accounts
+            static void DisplayAllAccounts()
+            {
+                Console.Clear();
+                Bank.DisplayAllAccounts();
+            }
+
+            // Helper function to get user input
+
+            static string GetInput(string prompt)
+            {
+                Console.WriteLine(prompt);
+                string input = Console.ReadLine();
+
+                // Check if the user wants to exit
+                if (input.ToLower() == "exit")
+                {
+                    Console.WriteLine("Exiting the current operation...");
+                    return null; // Return null if "exit" is entered
+                }
+
+                return input; // Return the valid input
+            }
+            // to validate string input contais only digits
+            static bool IsNumeric(string value)
+            {
+                return value.All(char.IsDigit);
+            }
         }
 
-        static bool IsNumeric(string value) 
-        { 
-            return value.All(char.IsDigit);
-        }
     }
 
-}
