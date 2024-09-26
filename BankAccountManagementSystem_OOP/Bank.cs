@@ -9,22 +9,23 @@ namespace BankAccountManagementSystem_OOP
     internal class Bank
     {
         //list to store Bank accounts 
-        private List<BankAccount> accounts;
+        static List<BankAccount> accounts { get; set; }
 
-        public Bank() 
+         static Bank() 
         {
             accounts = new List<BankAccount>();
-            accounts.Add(new BankAccount("444", "mmm"));
-            accounts.Add(new BankAccount("555", "ccc"));
-            accounts.Add(new BankAccount("999", "ddd", 8));
-            accounts.Add(new BankAccount("999", "ddd", 10));
+            IntialSetup();
         }
 
         //method to add a new account 
         public void AddAccount(BankAccount account) 
         {
-            accounts.Add(account);
-            Console.WriteLine("Account Successfully added!");
+            try
+            {
+                accounts.Add(account);
+                Console.WriteLine("Account Successfully added!");
+            } catch(Exception e) 
+            { Console.WriteLine("Error:"+e); }
         }
 
         // method to get an account by account number
@@ -36,6 +37,7 @@ namespace BankAccountManagementSystem_OOP
                 if (account.GetAccountNumber() == accountNumber)
                 { return account; }
             }
+            //or return null if not found
             if (checkdo==false)
             {
                 Console.WriteLine("Account not found!");
@@ -58,6 +60,14 @@ namespace BankAccountManagementSystem_OOP
                 account.GetAccountInfo();
             }
 
+           // for (int i = 0; i < accounts.Count; i++) { accounts[i].GetAccountInfo(); }
+
+        }
+        static void IntialSetup() {
+            accounts.Add(new BankAccount("444", "mmm"));
+            accounts.Add(new BankAccount("555", "ccc"));
+            accounts.Add(new BankAccount("999", "ddd", 8));
+            accounts.Add(new BankAccount("999", "ddd", 10));
         }
 
 

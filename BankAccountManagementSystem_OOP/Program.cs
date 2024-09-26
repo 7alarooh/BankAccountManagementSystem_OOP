@@ -18,7 +18,7 @@
                 Console.WriteLine("\n 2 .Deposit Money");
                 Console.WriteLine("\n 3 .Withdraw Money");
                 Console.WriteLine("\n 4 .Display All Accounts");
-                Console.WriteLine("\n 0 .singOut");
+                Console.WriteLine("\n 0 .Exit");
 
                 string choice = Console.ReadLine();
 
