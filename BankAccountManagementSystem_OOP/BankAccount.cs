@@ -15,7 +15,7 @@ namespace BankAccountManagementSystem_OOP
         private decimal balance;
 
         // constructor with 2 parameters
-        public BankAccount(string accountHolderName, string accountNumber) 
+        public BankAccount( string accountNumber, string accountHolderName) 
         {
             this.accountHolderName = accountHolderName;
             this.accountNumber = accountNumber;
@@ -23,7 +23,7 @@ namespace BankAccountManagementSystem_OOP
 
         }
         // constructor with an initial deposit amount
-        public BankAccount(string accountHolderName, string accountNumber,decimal initialDeposit )
+        public BankAccount(string accountNumber, string accountHolderName,decimal initialDeposit )
         { 
             this.accountHolderName = accountHolderName;
             this.accountNumber = accountNumber;

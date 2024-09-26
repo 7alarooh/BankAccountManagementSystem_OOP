@@ -57,8 +57,12 @@
             Console.WriteLine(":::::: Create New Account ::::::");
 
             string accountNumber = GetInput("Enter the account number:");
-            string accountHolderName = GetInput("Enter the account holder name:");
+            if (!IsNumeric(accountNumber)) { Console.WriteLine("Sorry! you must Enter numbers only!");
+                return;
+            }
 
+                string accountHolderName = GetInput("Enter the account holder name:");
+            
             if (string.IsNullOrEmpty(accountNumber) || string.IsNullOrEmpty(accountHolderName))
             {
                 Console.WriteLine("Operation canceled.");
@@ -80,6 +84,11 @@
         static void DepositMoney()
         {
             string accountNumber = GetInput("Enter the account number:");
+            if (!IsNumeric(accountNumber))
+            {
+                Console.WriteLine("Sorry! you must Enter numbers only!");
+                return;
+            }
             BankAccount account = Bank.GetAccountByNumber(accountNumber);
             if (account != null)
             {
@@ -100,6 +109,11 @@
         {
             string accountNumber = GetInput("Enter the account number:");
             BankAccount account = Bank.GetAccountByNumber(accountNumber);
+            if (!IsNumeric(accountNumber))
+            {
+                Console.WriteLine("Sorry! you must Enter numbers only!");
+                return;
+            }
             if (account != null)
             {
                 string amountInput = GetInput("Enter amount to withdraw:");
@@ -136,6 +150,11 @@
             }
 
             return input; // Return the valid input
+        }
+
+        static bool IsNumeric(string value) 
+        { 
+            return value.All(char.IsDigit);
         }
     }
 
