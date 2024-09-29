@@ -35,17 +35,23 @@ namespace BankAccountManagementSystem_OOP
             }
         }
         // method to deposit money  (increase balance)
-        public void Deposit(decimal amount) 
+        public void Deposit(decimal amount, bool show=false) 
         {
 
             if (amount > 0)
             {
                 balance += amount;
-                Console.WriteLine($"Successfully deposited {amount} OMR. New balance  is {balance} OMR");
+                if (show == true)
+                {
+                    Console.WriteLine($"Successfully deposited {amount} OMR. New balance  is {balance} OMR");
+                }
             }
             else
             {
-                Console.WriteLine("deposit amount must be positive!");
+                if (show == true)
+                {
+                    Console.WriteLine("deposit amount must be positive!");
+                }
             }
         }
 

@@ -109,7 +109,7 @@
                     string amountInput = GetInput("Enter amount to deposit:");
                     if (decimal.TryParse(amountInput, out decimal amount))
                     {
-                        account.Deposit(amount);
+                        account.Deposit(amount,true);
                     }
                     else
                     {
